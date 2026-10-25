@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0d12">
+<title>Arizona Legal — новый визуал</title>
+<style>
+:root{--bg:#090c11;--surface:#111720;--surface2:#171f2b;--stroke:#273342;--text:#f4f7fb;--muted:#8e9bab;--accent:#c9ff4d;--accent2:#9dff00;--cyan:#7ce6e2;--danger:#ff6f77}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,black,transparent 70%)}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,100% - 32px);margin:auto}
+.topbar{position:sticky;top:0;z-index:10;background:#090c11e8;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:11px}.mark{height:40px;width:40px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:#10150a;font-size:23px;font-weight:1000;box-shadow:0 0 26px #c9ff4d20}
+.logotype{font-weight:900;letter-spacing:1.5px;font-size:15px}.logotype span{display:block;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:2.3px;margin-top:-2px}
+.navlinks{display:flex;gap:22px;color:#a8b2c0;font-size:13px}.navlinks a:hover{color:var(--accent)}
+.server-chip{border:1px solid #35412a;background:#151d10;color:var(--accent);border-radius:8px;padding:9px 12px;font-size:12px;font-weight:800;white-space:nowrap}
+.hero{padding:44px 0 28px;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+.kicker{display:flex;align-items:center;gap:9px;color:var(--accent);font-size:11px;letter-spacing:2px;font-weight:900;text-transform:uppercase}.live-dot{height:7px;width:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent)}
+h1{font-size:clamp(39px,7vw,72px);letter-spacing:-3.8px;line-height:.98;margin:19px 0 17px;font-weight:950}h1 em{font-style:normal;color:var(--accent)}
+.lead{max-width:550px;color:#a5b0be;font-size:16px;line-height:1.7;margin:0 0 25px}
+.searchbox{display:flex;align-items:center;gap:12px;border:1px solid #34404d;background:#111720;border-radius:13px;padding:6px 7px 6px 15px;box-shadow:0 18px 50px #0005}
+.searchbox .searchicon{color:var(--accent);font-size:21px}.searchbox input{min-width:0;flex:1;background:transparent;border:0;outline:0;color:var(--text);font:inherit;padding:11px 0}.searchbox input::placeholder{color:#6e7b8b}.searchbox button{background:var(--accent);border:0;border-radius:9px;padding:11px 15px;font-weight:900;color:#10150a;cursor:pointer}
+.hero-art{min-height:270px;position:relative;border:1px solid #ffffff14;border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 70% 30%,#c9ff4d20,transparent 40%),linear-gradient(140deg,#1c2834,#0c1119 65%);padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.hero-art:before{content:"§";position:absolute;right:10px;top:-80px;font-size:320px;line-height:1;color:#c9ff4d0c;font-weight:1000;transform:rotate(-12deg)}
+.art-top,.art-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:10px}.art-label{font-size:10px;letter-spacing:1.8px;color:#9eabb8;font-weight:800}.status{font-size:10px;color:var(--accent);border:1px solid #c9ff4d50;border-radius:6px;padding:5px 7px}
+.art-main{position:relative;z-index:1}.art-main .big{font-size:64px;line-height:1;font-weight:950;letter-spacing:-4px;color:var(--accent)}.art-main p{margin:10px 0 0;color:#aab5c2;font-size:13px;max-width:220px}
+.mini-stat{border-left:2px solid var(--accent);padding-left:10px}.mini-stat strong{display:block;font-size:18px}.mini-stat span{display:block;font-size:10px;color:var(--muted);letter-spacing:1px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:24px 0 14px}.section-head h2{font-size:22px;letter-spacing:-.7px;margin:0}.section-head p{margin:0;color:var(--muted);font-size:12px}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 15px}.filter{border:1px solid var(--stroke);background:#10151d;color:#9eabba;border-radius:8px;padding:9px 13px;white-space:nowrap;font:inherit;font-size:12px;font-weight:750;cursor:pointer}.filter.active,.filter:hover{background:#c9ff4d;color:#11160a;border-color:#c9ff4d}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.card{position:relative;min-height:155px;border:1px solid var(--stroke);background:linear-gradient(145deg,#151d28,#0e131b);border-radius:15px;padding:17px;text-align:left;color:var(--text);cursor:pointer;overflow:hidden;transition:transform .18s,border-color .18s}
+.card:hover,.card.active{transform:translateY(-3px);border-color:#c9ff4d80}.card:after{content:"";position:absolute;right:-26px;bottom:-42px;width:110px;height:110px;border:1px solid #ffffff0c;border-radius:28px;transform:rotate(25deg)}
+.card .icon{height:36px;width:36px;border-radius:10px;display:grid;place-items:center;background:#c9ff4d14;color:var(--accent);font-size:19px;border:1px solid #c9ff4d20}
+.card strong{display:block;font-size:14px;margin-top:14px}.card small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.list-head{margin-top:34px}.count{color:var(--accent);font-size:11px;font-weight:900;letter-spacing:1px}
+.results{display:grid;gap:10px}.result{border:1px solid var(--stroke);border-radius:13px;background:#10161f;padding:17px;display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:start}
+.result-no{background:#1c2714;border:1px solid #c9ff4d25;color:var(--accent);border-radius:9px;padding:8px 5px;text-align:center;font-weight:900;font-size:13px}.result h3{font-size:14px;margin:0 0 5px}.result p{font-size:12px;color:var(--muted);margin:0}.result .kind{font-size:10px;color:var(--cyan);border:1px solid #7ce6e233;padding:4px 7px;border-radius:6px;white-space:nowrap}
+.notice{margin-top:18px;border:1px solid #c9ff4d26;background:#c9ff4d08;border-radius:12px;padding:14px;color:#aeb9c5;font-size:12px}.notice b{color:var(--accent)}
+footer{border-top:1px solid #ffffff12;margin-top:36px;padding:24px 0 36px;color:#778392;font-size:11px;display:flex;justify-content:space-between;gap:14px}
+@media(max-width:760px){.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:32px;gap:20px}.hero-art{min-height:220px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}h1{letter-spacing:-2px}.section-head p{display:none}}
+@media(max-width:400px){.wrap{width:calc(100% - 22px)}.server-chip{font-size:10px;padding:8px}.searchbox button{padding:10px}.result{grid-template-columns:44px 1fr}.result .kind{grid-column:2;justify-self:start}.art-main .big{font-size:54px}}
+</style></head>
+<body>
+<header class="topbar"><div class="wrap nav">
+<a class="logo" href="#"><div class="mark">§</div><div class="logotype">ARIZONA LEGAL<span>COMMUNITY KNOWLEDGE BASE</span></div></a>
+<nav class="navlinks"><a href="#sections">Разделы</a><a href="#materials">Материалы</a><a href="#about">О проекте</a></nav>
+<div class="server-chip">● ALL SERVERS</div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div><div class="kicker"><span class="live-dot"></span> PLAYER LEGAL SYSTEM / 2026</div>
+<h1>ЗНАЙ СВОИ<br><em>ПРАВА.</em></h1>
+<p class="lead">Современный справочник Arizona RP. Кодексы, процедуры и правила государственных организаций — в одном месте, без лишнего шума.</p>
+<div class="searchbox"><span class="searchicon">⌕</span><input id="search" type="search" placeholder="Статья, нарушение, ключевое слово..." aria-label="Поиск"><button id="searchBtn">НАЙТИ ↗</button></div>
+</div>
+<div class="hero-art"><div class="art-top"><span class="art-label">ARIZONA ROLEPLAY / LEGAL HUB</span><span class="status">BETA VERSION</span></div><div class="art-main"><div class="big">A/Z</div><p>Точный источник. Понятная формулировка. Быстрый доступ.</p></div><div class="art-bottom"><div class="mini-stat"><strong>01</strong><span>ЕДИНАЯ БАЗА</span></div><div class="mini-stat"><strong>24/7</strong><span>ДОСТУП ОНЛАЙН</span></div><div class="mini-stat"><strong>RP</strong><span>COMMUNITY</span></div></div></div>
+</section>
+<section id="sections"><div class="section-head"><h2>База знаний</h2><p>ВЫБЕРИ НУЖНЫЙ РАЗДЕЛ</p></div>
+<div class="cards" id="categories">
+<button class="card" data-cat="Уголовный кодекс"><span class="icon">§</span><strong>Уголовный кодекс</strong><small>Составы нарушений и санкции</small></button>
+<button class="card" data-cat="Административный кодекс"><span class="icon">⚖</span><strong>Административный кодекс</strong><small>Штрафы и административные нормы</small></button>
+<button class="card" data-cat="Процессуальные правила"><span class="icon">▤</span><strong>Процедуры</strong><small>Задержание и оформление</small></button>
+<button class="card" data-cat="Правила дорожного движения"><span class="icon">⌁</span><strong>ПДД</strong><small>Дорожные правила и нарушения</small></button>
+<button class="card" data-cat="Конституция"><span class="icon">▣</span><strong>Конституция</strong><small>Базовые нормы и права</small></button>
+<button class="card" data-cat="Госорганизации"><span class="icon">♜</span><strong>Госорганизации</strong><small>Полиция, ФСБ, армия и другие</small></button>
+<button class="card" data-cat="Правила сервера"><span class="icon">◈</span><strong>Правила сервера</strong><small>Общие правила Arizona RP</small></button>
+<button class="card" data-cat="Все"><span class="icon">⌕</span><strong>Все материалы</strong><small>Просмотр всей базы</small></button>
+</div></section>
+<section id="materials"><div class="section-head list-head"><h2 id="heading">Популярные материалы</h2><span class="count" id="count">DEMO / 07 ITEMS</span></div>
+<div class="filters" id="filters"><button class="filter active" data-cat="Все">Все материалы</button><button class="filter" data-cat="Уголовный кодекс">УК</button><button class="filter" data-cat="Административный кодекс">АК</button><button class="filter" data-cat="Процессуальные правила">Процедуры</button><button class="filter" data-cat="Госорганизации">Госструктуры</button></div>
+<div class="results" id="results"></div></section>
+<div class="notice" id="about"><b>ВНИМАНИЕ / BETA.</b> Это демонстрационный интерфейс. Карточки ниже — заглушки, а не действующие статьи Arizona RP. Перед публикацией реальных норм добавим первоисточник, дату проверки и указание сервера. Проект независимый и не связан с администрацией Arizona RP.</div>
+<footer><span>© ARIZONA LEGAL — COMMUNITY PROJECT</span><span>BUILT FOR PLAYERS · NOT OFFICIAL</span></footer>
+</main>
+<script>
+const demo=[
+{cat:"Уголовный кодекс",no:"УК —",title:"Карточка уголовной статьи",text:"Здесь будет точная формулировка, условия применения, санкция и ссылка на первоисточник.",kind:"DEMO"},
+{cat:"Административный кодекс",no:"АК —",title:"Карточка административной статьи",text:"Раздел для проверенных административных норм и наказаний.",kind:"DEMO"},
+{cat:"Процессуальные правила",no:"PROC",title:"Алгоритм задержания",text:"Пошаговая процедура с исключениями и ссылками на актуальные правила.",kind:"DEMO"},
+{cat:"Правила дорожного движения",no:"ПДД",title:"Дорожные нормы",text:"Правила дорожного движения и ответственность — после сверки с документами.",kind:"DEMO"},
+{cat:"Конституция",no:"CONST",title:"Основные права",text:"Проверенные конституционные нормы с указанием редакции документа.",kind:"DEMO"},
+{cat:"Госорганизации",no:"GOV",title:"Памятки для госслужащих",text:"Отдельные справочники для полицейских, ФСБ, армии и правительства.",kind:"DEMO"},
+{cat:"Правила сервера",no:"RULES",title:"Общие правила Arizona RP",text:"Ссылка на действующие правила и дата последней проверки.",kind:"DEMO"}];
+let selected="Все";const $=id=>document.getElementById(id);
+function render(){let q=$("search").value.trim().toLowerCase();let rows=demo.filter(x=>(selected==="Все"||x.cat===selected)&&(!q||(x.cat+" "+x.no+" "+x.title+" "+x.text).toLowerCase().includes(q)));$("heading").textContent=q?"Результаты поиска":selected==="Все"?"Популярные материалы":selected;$("count").textContent="DEMO / "+String(rows.length).padStart(2,"0")+" ITEMS";$("results").innerHTML="";if(!rows.length){$("results").innerHTML='<div class="result"><div class="result-no">—</div><div><h3>Ничего не найдено</h3><p>Попробуйте другое слово или выберите другой раздел.</p></div></div>';return}rows.forEach(x=>{let el=document.createElement("article");el.className="result";el.innerHTML='<div class="result-no"></div><div><h3></h3><p></p></div><span class="kind"></span>';el.children[0].textContent=x.no;el.querySelector("h3").textContent=x.title;el.querySelector("p").textContent=x.text;el.querySelector(".kind").textContent=x.kind;$("results").appendChild(el)})}
+function choose(cat){selected=cat;document.querySelectorAll("[data-cat]").forEach(x=>x.classList.toggle("active",x.dataset.cat===cat));render()}
+document.querySelectorAll("[data-cat]").forEach(x=>x.addEventListener("click",()=>{choose(x.dataset.cat);if(x.classList.contains("filter"))$("materials").scrollIntoView({behavior:"smooth"})}));
+$("search").addEventListener("input",render);$("searchBtn").addEventListener("click",()=>{$("materials").scrollIntoView({behavior:"smooth"});render()});$("search").addEventListener("keydown",e=>{if(e.key==="Enter"){$("materials").scrollIntoView({behavior:"smooth"});render()}});render();
+</script></body></html>
